@@ -109,8 +109,8 @@ def hello():
     return "<h1>Hello World</h1>"
 
 # sample api endpoint
-@app.route('/api/test', methods=['GET', 'POST'])
-def test():
+@app.route('/api/find_sentiment', methods=['GET', 'POST'])
+def find_sentiment():
         global most_positive
         global most_negative
         global total_score

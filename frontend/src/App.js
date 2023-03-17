@@ -20,7 +20,7 @@ function App() {
   })
 
   const [file, ChangeFile] = useState({
-    filename: "abosaba"
+    filename: ""
   })
 
   const [sentiment, setSentiment] = useState({
@@ -43,7 +43,7 @@ function App() {
     console.log(file)
   
     // #window.getSelection().toString();
-    fetch("//0.0.0.0:5000/api/test",  {
+    fetch("//0.0.0.0:5000/api/find_sentiment",  {
       method: 'POST',
       headers: {
         Accept: 'application/json',
