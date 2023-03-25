@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react'
 import {
   FileUploadContainer,
   FormField,
@@ -11,15 +11,15 @@ import {
   FileMetaData,
   RemoveFileIcon,
   InputLabel
-} from "./file-upload.styles";
+} from './file-upload.styles'
 
-const KILO_BYTES_PER_BYTE = 1000;
-const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 500000;
+const KILO_BYTES_PER_BYTE = 1000
+const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 500000
 
 const convertNestedObjectToArray = (nestedObj) =>
-  Object.keys(nestedObj).map((key) => nestedObj[key]);
+  Object.keys(nestedObj).map((key) => nestedObj[key])
 
-const convertBytesToKB = (bytes) => Math.round(bytes / KILO_BYTES_PER_BYTE);
+const convertBytesToKB = (bytes) => Math.round(bytes / KILO_BYTES_PER_BYTE)
 
 const FileUpload = ({
   label,
@@ -29,54 +29,55 @@ const FileUpload = ({
   changeState,
   ...otherProps
 }) => {
-  const fileInputField = useRef(null);
-  const [files, setFiles] = useState({});
+  const fileInputField = useRef(null)
+  const [files, setFiles] = useState({})
 
   const handleUploadBtnClick = () => {
-    fileInputField.current.click();
-  };
+    fileInputField.current.click()
+  }
 
   const addNewFiles = (newFiles) => {
-    for (let file of newFiles) {
+    for (const file of newFiles) {
       if (file.size <= maxFileSizeInBytes) {
         if (!otherProps.multiple) {
-          return { file };
+          return { file }
         }
-        files[file.name] = file;
+        files[file.name] = file
       }
     }
-    return { ...files };
-  };
+    return { ...files }
+  }
 
   const callUpdateFilesCb = (files) => {
-    const filesAsArray = convertNestedObjectToArray(files);
-    updateFilesCb(filesAsArray);
-  };
+    const filesAsArray = convertNestedObjectToArray(files)
+    updateFilesCb(filesAsArray)
+  }
 
   const handleNewFileUpload = (e) => {
-    const { files: newFiles } = e.target;
+    const { files: newFiles } = e.target
     if (newFiles.length) {
-      let updatedFiles = addNewFiles(newFiles);
-      setFiles(updatedFiles);
-      callUpdateFilesCb(updatedFiles);
+      const updatedFiles = addNewFiles(newFiles)
+      setFiles(updatedFiles)
+      callUpdateFilesCb(updatedFiles)
     }
-  };
+  }
 
   const removeFile = (fileName) => {
-    delete files[fileName];
-    setFiles({ ...files });
-    callUpdateFilesCb({ ...files });
-    console.log("removed file", fileName)
-  };
+    delete files[fileName]
+    setFiles({ ...files })
+    callUpdateFilesCb({ ...files })
+    console.log('removed file', fileName)
+  }
 
   return (
     <>
-      <FileUploadContainer>
+      <FileUploadContainer className={'background-blue'}
+>
         <InputLabel>{label}</InputLabel>
         <DragDropText>Choose a file to analyze</DragDropText>
         <UploadFileBtn type="button" onClick={handleUploadBtnClick}>
           <i className="fas fa-file-upload" />
-          <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
+          <span> Upload {otherProps.multiple ? 'files' : 'a file'}</span>
         </UploadFileBtn>
         <FormField
           type="file"
@@ -90,11 +91,11 @@ const FileUpload = ({
       <FilePreviewContainer>
         <PreviewList>
           {Object.keys(files).map((fileName, index) => {
-            let file = files[fileName];
-            let isImageFile = file.type.split("/")[0] === "image";
+            const file = files[fileName]
+            const isImageFile = file.type.split('/')[0] === 'image'
             return (
               // ChangeFile({ ...stateVar, filename: fileName })
-              <PreviewContainer key={fileName} onClick={() => {changeState({ ...stateVar, filename: fileName });console.log("clicked ", fileName, stateVar)}}>
+              <PreviewContainer key={fileName} onClick={() => { changeState({ ...stateVar, filename: fileName }); console.log('clicked ', fileName, stateVar) }}>
                 <div>
                   {isImageFile && (
                     <ImagePreview
@@ -114,12 +115,12 @@ const FileUpload = ({
                   </FileMetaData>
                 </div>
               </PreviewContainer>
-            );
+            )
           })}
         </PreviewList>
       </FilePreviewContainer>
     </>
-  );
-};
+  )
+}
 
-export default FileUpload;
+export default FileUpload

@@ -11,6 +11,10 @@
   display:none; 
 }
 
+.background-blue {
+  background-color: #61dafb;
+}
+
 #main-button {
   box-sizing: border-box;
   appearance: none;

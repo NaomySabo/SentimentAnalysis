@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const FileUploadContainer = styled.section`
   position: relative;
@@ -9,8 +9,8 @@ export const FileUploadContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-`;
+  background-color: #d6e7ef;
+`
 
 export const FormField = styled.input`
   font-size: 18px;
@@ -28,7 +28,7 @@ export const FormField = styled.input`
   &:focus {
     outline: none;
   }
-`;
+`
 
 export const InputLabel = styled.label`
   top: -21px;
@@ -38,14 +38,14 @@ export const InputLabel = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const DragDropText = styled.p`
   font-weight: bold;
   letter-spacing: 2.2px;
   margin-top: 0;
   text-align: center;
-`;
+`
 
 export const UploadFileBtn = styled.button`
   box-sizing: border-box;
@@ -129,7 +129,7 @@ export const UploadFileBtn = styled.button`
     filter: grayscale(100%);
     pointer-events: none;
   }
-`;
+`
 
 export const FilePreviewContainer = styled.article`
   margin-bottom: 35px;
@@ -137,7 +137,7 @@ export const FilePreviewContainer = styled.article`
   span {
     font-size: 14px;
   }
-`;
+`
 
 export const PreviewList = styled.section`
   display: flex;
@@ -147,10 +147,10 @@ export const PreviewList = styled.section`
   @media only screen and (max-width: 400px) {
     flex-direction: column;
   }
-`;
+`
 
 export const FileMetaData = styled.div`
-  display: ${(props) => (props.isImageFile ? "none" : "flex")};
+  display: ${(props) => (props.isImageFile ? 'none' : 'flex')};
   flex-direction: column;
   position: absolute;
   top: 0;
@@ -168,7 +168,7 @@ export const FileMetaData = styled.div`
     display: flex;
     justify-content: space-between;
   }
-`;
+`
 
 export const RemoveFileIcon = styled.i`
   cursor: pointer;
@@ -176,7 +176,7 @@ export const RemoveFileIcon = styled.i`
   &:hover {
     transform: scale(1.3);
   }
-`;
+`
 
 export const PreviewContainer = styled.section`
   padding: 0.25rem;
@@ -210,10 +210,10 @@ export const PreviewContainer = styled.section`
     width: 100%;
     padding: 0 0 0.4em;
   }
-`;
+`
 
 export const ImagePreview = styled.img`
   border-radius: 6px;
   width: 100%;
   height: 100%;
-`;
+`
