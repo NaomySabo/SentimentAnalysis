@@ -1,6 +1,6 @@
 # SentimentAnalysis
 
-To run this system, running the following commands in the sentimentAnalysis directory:
+To run this system, running the following commands in the SentimentAnalysis root directory:
   - docker compose build
   - docker compose up
   
