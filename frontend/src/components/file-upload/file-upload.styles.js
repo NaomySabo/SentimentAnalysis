@@ -9,7 +9,7 @@ export const FileUploadContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d6e7ef;
+  background-color: rgb(222, 233, 247);
 `
 
 export const FormField = styled.input`
@@ -50,7 +50,7 @@ export const DragDropText = styled.p`
 export const UploadFileBtn = styled.button`
   box-sizing: border-box;
   appearance: none;
-  background-color: transparent;
+  background-color: white;
   border: 2px solid #3498db;
   cursor: pointer;
   font-size: 1rem;
