@@ -6,6 +6,12 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import './App.css'
 
 function App () {
+  const veryPositive = "Very Positive"
+  const positive = "Positive"
+  const neutral = "Neutral"
+  const negative = "Negative"
+  const veryNegative = "Very Negative"
+
   const [newUserInfo, setNewUserInfo] = useState({
     profileImages: []
   })
@@ -31,6 +37,19 @@ function App () {
   const handleSubmit = (event) => {
     event.preventDefault()
     // logic to create new user...
+  }
+
+  const colourClass = (type) => {
+    if (type == "heading") {
+      if (sentiment.average_sentiment === veryPositive || sentiment.average_sentiment === positive) {
+        return "green ";
+      } else if (sentiment.average_sentiment === neutral) {
+        return "yellow ";
+      } else if (sentiment.average_sentiment === negative || sentiment.average_sentiment === veryNegative) {
+        return "red ";
+      }
+    }
+
   }
 
   const toggleButtonState = () => {
@@ -84,16 +103,16 @@ function App () {
     <div className={display.show ? 'center' : 'hidden'}>
       <Card style={{ width: '30rem', marginTop: '3rem' }} >
       <ListGroup variant="flush">
-        <ListGroup.Item className={'blue'}>Average Sentiment: { sentiment.average_sentiment} </ListGroup.Item>
-        <ListGroup.Item className={'blue'}>Median Sentiment: {sentiment.median_sentiment}</ListGroup.Item>
+        <ListGroup.Item className={colourClass("heading") + 'margin-bottom-25'}>Average Sentiment: { sentiment.average_sentiment} </ListGroup.Item>
+        <ListGroup.Item className={colourClass("heading") + 'margin-bottom-25'}>Median Sentiment: {sentiment.median_sentiment}</ListGroup.Item>
         <ListGroup.Item className={'blue'}>Most Positive Reviews:</ListGroup.Item>
         <ListGroup.Item className={'lightblue'}>1. &quot;{ sentiment.most_positive[2]}&quot;</ListGroup.Item>
         <ListGroup.Item className={'lightblue'}>2. &quot;{ sentiment.most_positive[1]}&quot;</ListGroup.Item>
-        <ListGroup.Item className={'lightblue'}>3. &quot;{ sentiment.most_positive[0]}&quot;</ListGroup.Item>
+        <ListGroup.Item className={'lightblue margin-bottom-25 border-bottom-blue'}>3. &quot;{ sentiment.most_positive[0]}&quot;</ListGroup.Item>
         <ListGroup.Item className={'blue'}>Most Negative Reviews:</ListGroup.Item>
         <ListGroup.Item className={'lightblue'}>1. &quot;{ sentiment.most_negative[0]}&quot;</ListGroup.Item>
         <ListGroup.Item className={'lightblue'}>2. &quot;{ sentiment.most_negative[1]}&quot;</ListGroup.Item>
-        <ListGroup.Item className={'lightblue'}>3. &quot;{ sentiment.most_negative[2]}&quot;</ListGroup.Item>
+        <ListGroup.Item className={'lightblue margin-bottom-25 border-bottom-blue'}>3. &quot;{ sentiment.most_negative[2]}&quot;</ListGroup.Item>
       </ListGroup>
 
     </Card>
